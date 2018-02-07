@@ -1,0 +1,28 @@
+vscc_jobs.display_job:
+  path: '/areajobs/{jobID}'
+  defaults:
+    _controller: '\Drupal\vscc_jobs\Controller\JobsController::display_job'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      jobID:
+        type: String
+    
+vscc_jobs.display_internship:
+  path: '/work-based-learning/internships/{jobID}'
+  defaults:
+    _controller: '\Drupal\vscc_jobs\Controller\JobsController::display_internship'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      jobID:
+        type: String
+
+vscc_jobs.internships:
+  path: '/work-based-learning/internships'
+  defaults:
+    _controller: '\Drupal\vscc_jobs\Controller\JobsController::internships'
+  requirements:
+    _permission: 'access content'
