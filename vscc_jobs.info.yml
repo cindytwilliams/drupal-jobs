@@ -1,6 +1,6 @@
 name: VSCC Jobs Module
 description: Pulls area jobs listings from MachForm
-package: Custom
+package: VSCC
 
 type: module
 core: 8.x

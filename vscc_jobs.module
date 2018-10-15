@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * attach library to page
+ */
+function vscc_jobs_page_attachments(array &$page) {
+  
+  $page['#attached']['library'][] = 'vscc_jobs/areajobs-js';
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+function vscc_jobs_theme ($existing, $type, $theme, $path) {
+  return [
+    'vscc_jobs_block' =>
+    array(
+      'variables' => array(
+        'markup' => null,
+        'results' => null,
+      ), 
+      'template' => 'block--AreaJobs'
+    ),
+  'vscc_internships_block' =>
+    array(
+      'variables' => array(
+        'markup' => null,
+        'results' => null,
+      ), 
+      'template' => 'block--Internships'
+    )
+  ];
+}

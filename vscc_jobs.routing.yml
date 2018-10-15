@@ -19,10 +19,3 @@ vscc_jobs.display_internship:
     parameters:
       jobID:
         type: String
-
-vscc_jobs.internships:
-  path: '/work-based-learning/internships'
-  defaults:
-    _controller: '\Drupal\vscc_jobs\Controller\JobsController::internships'
-  requirements:
-    _permission: 'access content'

@@ -4,15 +4,15 @@ namespace Drupal\vscc_jobs\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 
 /**
- * Provides an 'Area Jobs' block.
+ * Provides an 'Internship' block.
  *
  * @Block(
- *   id = "jobs_block",
- *   admin_label = @Translation("Area Jobs block"),
- *   category = @Translation("Custom Area Jobs block")
+ *   id = "internships_block",
+ *   admin_label = @Translation("Internships block"),
+ *   category = @Translation("Custom Internships block")
  * )
  */
-class JobsBlock extends BlockBase {
+class InternshipsBlock extends BlockBase {
   
   /**
    * {@inheritdoc}
@@ -23,14 +23,13 @@ class JobsBlock extends BlockBase {
     \Drupal\Core\Database\Database::setActiveConnection('machformdb');
     $connection = \Drupal\Core\Database\Database::getConnection();
         
-    // query the jobs listings from the database
-    $query = $connection->select('ap_form_21491', 't')->fields('t', array('id','element_1','element_2','element_19','date_created'));
+    /* query the jobs listings from the database */
+    $query = $connection->select('ap_form_79718', 't')->fields('t', array('id','element_1','element_2','element_3_3','element_3_4','date_created'));
     
     $date30 = date('Y-m-d', strtotime('-30 days'));
-    $dateNow = date('Y-m-d', strtotime('+1 days'));
+    $dateNow = date('Y-m-d');
     $query->condition('date_created', array($date30, $dateNow), 'BETWEEN'); // job was posted within the past 30 days
 
-    $query->condition('element_16', '1', '!=');   // job is active
     $query->orderBy('id', 'DESC');
     
     // execute query
@@ -44,7 +43,7 @@ class JobsBlock extends BlockBase {
     		'id' => $record['id'],
     		'title' => $record['element_1'],
     		'company' => $record["element_2"],
-    		'location' => $record["element_19"],
+    		'location' => $record["element_3_3"] . ', ' . $record["element_3_4"],
     		'date' => date("n/j/Y", strtotime($record["date_created"]))
     	);
     }
@@ -54,7 +53,7 @@ class JobsBlock extends BlockBase {
           
     // send results to Twig template
     return array(
-      '#theme' => 'vscc_jobs_block',
+      '#theme' => 'vscc_internships_block',
       '#type' => 'markup',
       '#results' => $resultsArr,
       '#cache' => [

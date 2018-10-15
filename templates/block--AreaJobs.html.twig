@@ -1,0 +1,20 @@
+<table class="sort">
+<thead>
+    <th>Position</th>
+    <th>Company Name</th>
+    <th>Location</th>
+    <th>Date Posted</th>
+</thead>
+
+{% for key, job in results %}
+
+  <tr>
+    <td><a href="/areajobs/{{job.id}}" target="_blank">{{job.title}}</a></td>
+    <td>{{job.company}}</td>
+    <td>{{job.location}}</td>
+    <td>{{job.date}}</td>
+  </tr>
+  
+{% endfor %}  
+    
+</table>

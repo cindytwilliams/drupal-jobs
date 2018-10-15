@@ -1,0 +1,8 @@
+areajobs-js:
+  css:
+    component:
+      css/scripts.css: {}
+  js:
+    js/scripts.js: {}
+  dependencies:
+    - core/jquery
